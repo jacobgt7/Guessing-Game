@@ -3,17 +3,22 @@
 void Main()
 {
     Console.WriteLine("Guess the secret number!");
-    int userGuess = int.Parse(Console.ReadLine());
 
     int secretNumber = 47;
 
-    if (userGuess == secretNumber)
+
+    for (int i = 1; i < 5; i++)
     {
-        Console.WriteLine("You're right!!!");
-    }
-    else
-    {
-        Console.WriteLine("You're wrong.  Better luck next time.");
+        int userGuess = int.Parse(Console.ReadLine());
+
+        if (userGuess == secretNumber)
+        {
+            Console.WriteLine("You're right!!!");
+        }
+        else
+        {
+            Console.WriteLine("You're wrong.  Better luck next time.");
+        }
     }
 }
 
