@@ -14,10 +14,11 @@ void Main()
         if (userGuess == secretNumber)
         {
             Console.WriteLine("You're right!!!");
+            break;
         }
         else
         {
-            Console.WriteLine("You're wrong.  Better luck next time.");
+            Console.WriteLine($"Try again. Your guess ({i + 1})");
         }
     }
 }
