@@ -5,7 +5,6 @@ void Main()
     Console.WriteLine("Guess the secret number!");
 
     int secretNumber = new Random().Next(1, 101);
-    Console.WriteLine(secretNumber);
 
     for (int i = 1; i < 5; i++)
     {
@@ -18,7 +17,16 @@ void Main()
         }
         else
         {
-            Console.WriteLine($"Try again. You have {4 - i} guesses remaining.");
+            int LowOrHigh = secretNumber - userGuess;
+            if (LowOrHigh < 0)
+            {
+                Console.WriteLine($"Your guess was too high.  You have {4 - i} guesses remaining.");
+            }
+            else
+            {
+                Console.WriteLine($"Your guess was too low. You have {4 - i} guesses remaining.");
+
+            }
         }
     }
 }
