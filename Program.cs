@@ -3,9 +3,10 @@
 void Main()
 {
     int numOfGuesses = 0;
-    while (numOfGuesses == 0)
+    bool infiniteGuesses = false;
+    while (numOfGuesses == 0 && infiniteGuesses == false)
     {
-        Console.WriteLine("Choose a difficulty: Easy | Medium | Hard");
+        Console.WriteLine("Choose a difficulty: Cheater | Easy | Medium | Hard");
         string difficulty = Console.ReadLine().ToLower();
         switch (difficulty)
         {
@@ -18,6 +19,9 @@ void Main()
             case "hard":
                 numOfGuesses = 4;
                 break;
+            case "cheater":
+                infiniteGuesses = true;
+                break;
             default:
                 numOfGuesses = 0;
                 break;
@@ -27,9 +31,11 @@ void Main()
 
     int secretNumber = new Random().Next(1, 101);
 
-    for (int i = 1; i <= numOfGuesses; i++)
+    while (numOfGuesses > 0 || infiniteGuesses == true)
     {
         int userGuess = int.Parse(Console.ReadLine());
+
+        numOfGuesses--;
 
         if (userGuess == secretNumber)
         {
@@ -38,15 +44,10 @@ void Main()
         }
         else
         {
-            int LowOrHigh = secretNumber - userGuess;
-            if (LowOrHigh < 0)
+            Console.WriteLine(secretNumber < userGuess ? "Your guess was too high." : "Your guess was too low.");
+            if (infiniteGuesses == false)
             {
-                Console.WriteLine($"Your guess was too high.  You have {numOfGuesses - i} guesses remaining.");
-            }
-            else
-            {
-                Console.WriteLine($"Your guess was too low. You have {numOfGuesses - i} guesses remaining.");
-
+                Console.WriteLine($"You have {numOfGuesses} guesses remaining.");
             }
         }
     }
